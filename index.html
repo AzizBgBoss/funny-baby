@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>لعبة الرضيع الطريف</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero-card">
+      <div class="title-wrap">
+        <p class="eyebrow">Static Prototype</p>
+        <h1>لعبة الرضيع الطريف</h1>
+        <p class="subtitle">Chaotic baby-bomber sandbox with local bots, keyboard play, and mobile analog controls.</p>
+      </div>
+
+      <div class="hud" aria-live="polite">
+        <div class="hud-item">
+          <span class="hud-label">Status</span>
+          <strong id="statusText">Round starting</strong>
+        </div>
+        <div class="hud-item">
+          <span class="hud-label">Controls</span>
+          <strong>WASD / Bomb key <span id="bombKeyLabel">Space</span></strong>
+        </div>
+        <div class="hud-item">
+          <span class="hud-label">Players Alive</span>
+          <strong id="aliveText">0</strong>
+        </div>
+      </div>
+
+      <div class="game-frame">
+        <canvas id="gameCanvas" width="960" height="832" aria-label="Game canvas"></canvas>
+      </div>
+
+      <div class="touch-panel" id="touchPanel">
+        <div class="touch-copy">
+          <strong>Mobile Controls</strong>
+          <span>Drag the analog pad to move. Tap bomb to drop chaos.</span>
+        </div>
+        <div class="touch-controls">
+          <div class="joystick" id="joystickZone">
+            <div class="joystick-ring"></div>
+            <div class="joystick-knob" id="joystickKnob"></div>
+          </div>
+          <button class="bomb-button" id="bombButton" type="button" aria-label="Place bomb">BOMB</button>
+        </div>
+      </div>
+
+      <div class="tips">
+        <span>Break blocks, trap bots, survive the blast.</span>
+        <span>On phones, controls sit under the arena so they do not cover the playfield.</span>
+      </div>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>

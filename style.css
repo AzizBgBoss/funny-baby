@@ -1,0 +1,277 @@
+:root {
+  color-scheme: dark;
+  --bg-top: #13293d;
+  --bg-bottom: #06354a;
+  --card: rgba(8, 17, 28, 0.78);
+  --card-border: rgba(255, 255, 255, 0.12);
+  --text: #fef7e4;
+  --muted: #d2ebff;
+  --accent: #ffd166;
+  --accent-2: #ff7b72;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(255, 209, 102, 0.18), transparent 28%),
+    linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+  color: var(--text);
+}
+
+body {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.app-shell {
+  width: min(1180px, calc(100vw - 24px));
+  margin: 0 auto;
+  height: 100vh;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.hero-card {
+  width: 100%;
+  border: 1px solid var(--card-border);
+  border-radius: 28px;
+  padding: 14px 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent),
+    var(--card);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+}
+
+.title-wrap {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.78rem;
+  color: var(--accent);
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 0.95;
+}
+
+.subtitle {
+  margin: 0;
+  max-width: 720px;
+  color: var(--muted);
+}
+
+.hud {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.hud-item {
+  border-radius: 18px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hud-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.game-frame {
+  position: relative;
+  width: min(100%, calc((100vh - 240px) * 1.1538));
+  margin: 0 auto;
+  border-radius: 26px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    radial-gradient(circle at top left, rgba(255, 123, 114, 0.12), transparent 22%),
+    #061017;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 15 / 13;
+  touch-action: none;
+}
+
+.touch-panel {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.touch-copy {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  max-width: 360px;
+}
+
+.touch-copy strong {
+  color: var(--text);
+}
+
+.touch-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 18px;
+  flex: 1;
+}
+
+.joystick {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  flex: 0 0 auto;
+  touch-action: none;
+}
+
+.joystick-ring,
+.joystick-knob {
+  position: absolute;
+  border-radius: 999px;
+}
+
+.joystick-ring {
+  inset: 0;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.joystick-knob {
+  width: 56px;
+  height: 56px;
+  left: 42px;
+  top: 42px;
+  background: rgba(255, 209, 102, 0.95);
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+.bomb-button {
+  width: 124px;
+  height: 124px;
+  border: 0;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 30% 30%, #fff0a6, #ff6f59 75%);
+  color: #2d0f05;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
+  transition: scale 120ms ease, filter 120ms ease;
+  touch-action: manipulation;
+}
+
+.bomb-button:active {
+  scale: 0.95;
+  filter: brightness(1.06);
+}
+
+.tips {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+@media (max-width: 820px) {
+  body {
+    height: auto;
+    overflow-y: auto;
+  }
+
+  .app-shell {
+    width: 100%;
+    height: auto;
+    padding: 12px 0 18px;
+    display: block;
+  }
+
+  .hero-card {
+    border-radius: 22px;
+    padding: 14px;
+  }
+
+  .game-frame {
+    width: 100%;
+    border-radius: 20px;
+  }
+
+  .touch-panel {
+    display: grid;
+    justify-content: stretch;
+  }
+
+  .touch-controls {
+    justify-content: space-between;
+  }
+
+  .hud {
+    grid-template-columns: 1fr;
+  }
+
+  .tips {
+    flex-direction: column;
+  }
+
+  .joystick {
+    width: 124px;
+    height: 124px;
+  }
+
+  .joystick-knob {
+    width: 50px;
+    height: 50px;
+    left: 37px;
+    top: 37px;
+  }
+
+  .bomb-button {
+    width: 112px;
+    height: 112px;
+  }
+}
+
+@media (min-width: 821px) and (pointer: coarse) {
+  .touch-panel {
+    display: flex;
+  }
+}
